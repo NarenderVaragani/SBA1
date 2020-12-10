@@ -1,0 +1,48 @@
+1: IUserDao.java
+1. User saveAndGet(String username, String email, String password, String role, String phone) throws AccessDeniedException
+2. User getUserByNameAndPwd(String username, String password) throws AccessDeniedException
+3. LoanInfo addLoan(String loanname, String loanamount,
+			String businessstruture, String taxindiacator, String address1, String address2, String address3,
+			String uid) throws AccessDeniedException
+4. LoanInfo getLoanByUserId(int userid) throws AccessDeniedException
+5. List<LoanInfo>  getLoanStatus(int userId) throws AccessDeniedException
+6. boolean updateLoan(int loanId, String loanName, String loanAmount, String bs, String ti, String a1, String a2, String a3) throws AccessDeniedException
+
+IAdminDao.java
+1. List<LoanInfo> getLoans() throws AccessDeniedException
+2. LoanInfo getLoanById(int loanId) throws AccessDeniedException
+3. ApprovedLoan getApprovedLoan(int loanId) throws AccessDeniedException
+4. boolean saveApprovedLoan(String loanId, double sanctionedAmount, int loanTerm,
+			String paymentStartDate, String loanClosureDate, double emi) throws AccessDeniedException
+5. boolean updateLoanStatus(String loanId, String status) throws AccessDeniedException 
+
+UserDaoImpl.java
+AdminDaoImpl.java
+
+*************************************************************************************************
+
+public class AccessDeniedException extends Exception {
+
+	public AccessDeniedException(String message) {
+		super(message);
+	}
+
+}
+
+Provide try catch for each DaoImpl methods and throw AccessDeniedException with corresponding message
+throw new AccessDeniedException("User details could not be fetched");
+
+
+Gerneral flow:
+Existing:
+GUI-->UserController-->ConnectionDao-->DB
+
+New:
+GUI-->Controller-->Service-->Dao-->Database
+GUI-->UserController-->IUserService-->IUserDao-->DB
+
+*************************************************************************************************
+IUserService.java
+IAdminService.java
+UserServiceImpl.java
+AdminServiceImpl.java

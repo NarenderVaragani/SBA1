@@ -1,0 +1,11 @@
+A dao interface + dao implementation class provides required operations using jdbc for each model/entity
+
+Separate services re defiend for each model/entity.
+
+Each service provide server side validations.
+
+Filters are used to serve authentication and authorization based on roles.
+
+A jsp page appears to indicate "Access Denied" in appropriate contexts.
+
+A Service interface and its implementation providing a function to match unm and pwd
